@@ -27,7 +27,6 @@ module.exports = function (grunt) {
             }
         },
         
-
         // Компилятор шаблонов angular
         ngtemplates: {
             strapGallery: {
@@ -52,7 +51,7 @@ module.exports = function (grunt) {
                 banner: '<%= meta.banner %>',
                 preserveComments: false, //will strip all comments
                 compress: {
-                    drop_console: true
+//                    drop_console: true
                 }
             },
             dist: {
