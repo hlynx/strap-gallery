@@ -1,0 +1,7 @@
+/*!
+ * StrapGallery v0.0.2
+ * https://github.com/hlynx/strap-gallery.git
+ * Copyright 2014 hlynx <hlynx@users.noreply.github.com>
+ */
+
+.strap-gallery img{cursor:pointer}.strap-gallery-img-outer{text-align:center;position:relative;width:800px;height:600px;line-height:600px}.strap-gallery-img-outer .arrow{position:absolute;top:0;background:rgba(0,0,0,.3);height:100%;width:50px;cursor:pointer}.strap-gallery-img-outer .arrow:hover{background:rgba(0,0,0,.5)}.strap-gallery-img-outer .arrow span{font-size:30px;color:#fff;line-height:normal;display:block;position:absolute;top:50%;margin-top:-10px;width:50px;text-align:center}.strap-gallery-img-outer .arrow.next span,.strap-gallery-modal .next{right:0}.strap-gallery-img{max-width:800px;max-height:600px;vertical-align:middle}.modal.center .modal-dialog{left:50%;position:fixed;top:45%;transform:translateX(-50%) translateY(-50%);width:830px}.modal-backdrop{bottom:0}

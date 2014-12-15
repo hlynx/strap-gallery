@@ -1,24 +1,28 @@
 {
-  "name": "strap-gallery",
-  "version": "0.0.1",
-  "authors": [
-    "hlynx <hlynx@users.noreply.github.com>"
-  ],
-  "description": "AngularStrap based image gallery",
-  "main": "index.html",
-  "keywords": [
-    "angularstrap",
-    "gallery"
-  ],
-  "license": "MIT",
-  "ignore": [
-    "**/.*",
-    "node_modules",
-    "bower_components",
-    "test",
-    "tests"
-  ],
-  "dependencies": {
-    "angular-strap": "latest"
-  }
+    "name": "strap-gallery",
+    "version": "0.0.2",
+    "authors": [
+        "hlynx <hlynx@users.noreply.github.com>"
+    ],
+    "description": "AngularStrap based image gallery",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/hlynx/strap-gallery.git"
+    },
+    "main": "index.html",
+    "keywords": [
+        "angularstrap",
+        "gallery"
+    ],
+    "license": "MIT",
+    "ignore": [
+        "**/.*",
+        "node_modules",
+        "bower_components",
+        "test",
+        "tests"
+    ],
+    "dependencies": {
+        "angular-strap": "latest"
+    }
 }

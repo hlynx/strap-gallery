@@ -10,7 +10,7 @@
 //                src: '='
 //            },
             transclude: true,
-            templateUrl: '/src/template.html',
+            templateUrl: 'src/template.html',
             link: function(scope, element, attrs) {
 //                console.log(element);
                 
@@ -19,7 +19,7 @@
                 scope.count = images.length;
 //                console.log(images);
                 
-                var modal = $modal({scope: scope, template: '/src/modal.html', show: false, animation: 'am-fade-and-scale', placement: 'center'});
+                var modal = $modal({scope: scope, template: 'src/modal.html', show: false, animation: 'am-fade-and-scale', placement: 'center'});
                 
                 for(var i=0; i<scope.count; i++) {
                     images[i].addEventListener('click', onClick);
