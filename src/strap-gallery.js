@@ -10,23 +10,37 @@
 //                src: '='
 //            },
             transclude: true,
-            templateUrl: 'src/template.html',
+            templateUrl: '/src/template.html',
             link: function(scope, element, attrs) {
 //                console.log(element);
+                var isBound = false;
                 
-                var images = element.find('img');
+                var images = [];
                 scope.currentId = 0;
-                scope.count = images.length;
-//                console.log(images);
                 
-                var modal = $modal({scope: scope, template: 'src/modal.html', show: false, animation: 'am-fade-and-scale', placement: 'center'});
+                var modal = $modal({scope: scope, template: '/src/modal.html', show: false, animation: 'am-fade-and-scale', placement: 'center'});
                 
-                for(var i=0; i<scope.count; i++) {
-                    images[i].addEventListener('click', onClick);
-                    images[i].dataset.id = i;
-                }
+                element[0].addEventListener('click', function(e) {
+                    if(!isBound) {
+                        bind(element);
+                        isBound = true;
+                    }
+                    onClick(e);
+                });
                 
                 $document.on('keypress', onKeyPress);
+                
+                function bind(element) {
+                    if(isBound) return;
+                    
+                    images = element.find('img');
+                    scope.count = images.length;
+                    for (var i = 0; i < scope.count; i++) {
+                        images[i].dataset.id = i;
+                    }
+
+                    isBound = true;
+                }
                 
                 scope.$on('$destroy', function() {
                     for(var i=0; i<scope.count; i++)
@@ -50,13 +64,16 @@
                 };
                 
                 function onClick(e) {
+                    if(e.target.tagName !== 'IMG')
+                        return;
+                    
                     var id = parseInt(e.target.dataset.id);
                     setImage(id);
                     modal.$promise.then(modal.show);
                 }
                 
                 function setImage(id) {
-                    var src = images[id].dataset.src;
+                    var src = images[id].dataset.source;
                     scope.title = 'Фотографии: ';
                     scope.src = src;
                     scope.currentId = id;
@@ -96,5 +113,5 @@
             }
         };
     }
-    
+        
 })();

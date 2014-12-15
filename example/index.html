@@ -13,8 +13,7 @@
         
         <div ng-view class="container">
             <div data-strap-gallery>
-                <img src="images/shrek-thumb.jpg" data-src="images/shrek.jpg" alt="">
-                <img src="images/zebra-thumb.jpg" data-src="images/zebra.jpg" alt="">
+                <img ng-repeat="(thumb, src) in {'images/shrek-thumb.jpg': 'images/shrek.jpg', 'images/zebra-thumb.jpg': 'images/zebra.jpg'}"  data-source="{{ src }}" ng-src="{{ thumb }}" alt="">
             </div>
             
         </div>
@@ -23,7 +22,6 @@
         <script src="../bower_components/angular-strap/dist/angular-strap.js"></script>
         <script src="../bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
         <script src="../bower_components/angular-animate/angular-animate.js"></script>
-        <!--<script src="../bower_components/angular-motion/dist/modules/"></script>-->
         <script src="../dist/strap-gallery.min.js"></script>
         <!--<script src="../src/strap-gallery.js"></script>-->
         <script>

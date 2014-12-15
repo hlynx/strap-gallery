@@ -6,6 +6,7 @@ module.exports = function (grunt) {
         meta: {
             srcDir: 'src',
             destDir: 'dist',
+            ngtemplatesDest: '<%= meta.destDir %>/templates.js',
             banner: '/*!\n' +
                 ' * StrapGallery v<%= pkg.version %>\n' +
                 ' * <%= pkg.repository.url %>\n' +
@@ -29,18 +30,19 @@ module.exports = function (grunt) {
 
         // Компилятор шаблонов angular
         ngtemplates: {
-            dest: '<%= meta.destDir %>/templates.js',
             strapGallery: {
-//                cwd: '<%= meta.srcDir %>',
+                options: {
+                    prefix: '/'
+                },
+                cwd: '.',
                 src: ['<%= meta.srcDir %>/*.html'],
-                dest: '<%= ngtemplates.dest %>'
+                dest: '<%= meta.ngtemplatesDest %>'
             }
         },
         
         concat: {
             dist: {
-//                src: ['<%= meta.srcDir %>/*.js'],
-                src: ['<%= meta.srcDir %>/<%= pkg.name %>.js', '<%= ngtemplates.dest %>'],
+                src: ['<%= meta.srcDir %>/<%= pkg.name %>.js', '<%= meta.ngtemplatesDest %>'],
                 dest: '<%= meta.destDir %>/<%= pkg.name %>.js'
             }
         },
@@ -54,14 +56,13 @@ module.exports = function (grunt) {
                 }
             },
             dist: {
-//                src: '<%= concat.dist.dest %>',
-                src: ['<%= meta.destDir %>/<%= pkg.name %>.js'],
+                src: '<%= concat.dist.dest %>',
                 dest: '<%= meta.destDir %>/<%= pkg.name %>.min.js'
             }
         },
         
         clean: {
-            app: ['<%= ngtemplates.dest %>', '<%= concat.dist.dest %>']
+            app: [/*'<%= meta.ngtemplatesDest %>',*/ '<%= concat.dist.dest %>']
         }
         
     });
