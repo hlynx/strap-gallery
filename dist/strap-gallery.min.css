@@ -1,5 +1,5 @@
 /*!
- * StrapGallery v0.0.2
+ * StrapGallery v0.0.3
  * https://github.com/hlynx/strap-gallery.git
  * Copyright 2014 hlynx <hlynx@users.noreply.github.com>
  */
