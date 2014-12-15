@@ -1,6 +1,6 @@
 {
   "name": "strap-gallery",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "AngularStrap based image gallery",
   "main": "Gruntfile.js",
   "directories": {

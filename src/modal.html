@@ -10,11 +10,11 @@
                 <div class="strap-gallery-img-outer">
                     <div class="arrow next" ng-click="next()"><span class="glyphicon glyphicon-chevron-right"></span></div>
                     <div class="arrow prev" ng-click="prev()"><span class="glyphicon glyphicon-chevron-left"></span></div>
-                    <img class="strap-gallery-img" ng-src="{{src}}">
+                    <img class="strap-gallery-img" id="strap-gallery-img" ng-src="{{ src }}">
                 </div>
             </div>
             <div class="modal-footer">
-                {{ currentId + 1 }} из {{ count }}
+                {{ currentId + 1 }} из {{ imagesCount }}
             </div>
         </div>
     </div>

@@ -14,11 +14,11 @@ angular.module('strapGallery').run(['$templateCache', function($templateCache) {
     "                <div class=\"strap-gallery-img-outer\">\n" +
     "                    <div class=\"arrow next\" ng-click=\"next()\"><span class=\"glyphicon glyphicon-chevron-right\"></span></div>\n" +
     "                    <div class=\"arrow prev\" ng-click=\"prev()\"><span class=\"glyphicon glyphicon-chevron-left\"></span></div>\n" +
-    "                    <img class=\"strap-gallery-img\" ng-src=\"{{src}}\">\n" +
+    "                    <img class=\"strap-gallery-img\" id=\"strap-gallery-img\" ng-src=\"{{ src }}\">\n" +
     "                </div>\n" +
     "            </div>\n" +
     "            <div class=\"modal-footer\">\n" +
-    "                {{ currentId + 1 }} из {{ count }}\n" +
+    "                {{ currentId + 1 }} из {{ imagesCount }}\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
@@ -27,7 +27,7 @@ angular.module('strapGallery').run(['$templateCache', function($templateCache) {
 
 
   $templateCache.put('/src/template.html',
-    "<div class=\"strap-gallery\">\n" +
+    "<div class=\"strap-gallery\" ng-click=\"onClick($event)\">\n" +
     "    <div ng-transclude></div>\n" +
     "</div>"
   );

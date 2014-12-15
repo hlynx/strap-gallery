@@ -20,22 +20,14 @@
                 
                 var modal = $modal({scope: scope, template: '/src/modal.html', show: false, animation: 'am-fade-and-scale', placement: 'center'});
                 
-                element[0].addEventListener('click', function(e) {
-                    if(!isBound) {
-                        bind(element);
-                        isBound = true;
-                    }
-                    onClick(e);
-                });
-                
                 $document.on('keypress', onKeyPress);
                 
-                function bind(element) {
+                function bind() {
                     if(isBound) return;
-                    
                     images = element.find('img');
-                    scope.count = images.length;
-                    for (var i = 0; i < scope.count; i++) {
+                    scope.imagesCount = images.length;
+                    for (var i = 0; i < scope.imagesCount; i++) {
+//                        images[i].setAttribute('data-id1', i);
                         images[i].dataset.id = i;
                     }
 
@@ -43,14 +35,13 @@
                 }
                 
                 scope.$on('$destroy', function() {
-                    for(var i=0; i<scope.count; i++)
-                        images[i].removeEventListener('click', onClick);
+//                    element[0].removeEventListener('click', onClick);
                     
                     $document.off('keypress', onKeyPress);
                 });
                 
                 scope.next = function() {
-                    if(scope.currentId === scope.count-1)
+                    if(scope.currentId === scope.imagesCount-1)
                         setImage(0);
                     else
                         setImage(scope.currentId + 1);
@@ -58,25 +49,50 @@
                 
                 scope.prev = function() {
                     if(scope.currentId === 0)
-                        setImage(scope.count-1);
+                        setImage(scope.imagesCount - 1);
                     else
                         setImage(scope.currentId - 1);
                 };
                 
-                function onClick(e) {
+                scope.onClick = function(e) {
+                    if(!isBound) {
+                        bind();
+                        isBound = true;
+                    }
                     if(e.target.tagName !== 'IMG')
                         return;
                     
+//                    var id = parseInt(e.target.getAttribute('data-id1'));
                     var id = parseInt(e.target.dataset.id);
-                    setImage(id);
-                    modal.$promise.then(modal.show);
-                }
+                    
+                    modal.$promise.then(function() {
+                        modal.show();
+                        setImage(id);
+                    });
+                };
                 
                 function setImage(id) {
+//                    element[0].setAttribute('style', 'background: #fff');
                     var src = images[id].dataset.source;
+                    var img = document.getElementById('strap-gallery-img');
+//                    img.cloneNode(true);
+                    console.log(img);
+//                    var img = new Image();
+//                    img.onload = function() {
+//                    };
+//                    img.src = src;
                     scope.title = 'Фотографии: ';
-                    scope.src = src;
+                    scope.src = src;                        
+//                    if(img)
+//                        img.src = src;
+//                        img.setAttribute('src', src);
+                    
+                        
                     scope.currentId = id;
+//                    if (!scope.$$phase) {
+//                        scope.$digest();
+//                    }
+//                    modal.show()
                 }
                 
 //                console.log(modal);
