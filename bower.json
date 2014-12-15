@@ -1,0 +1,24 @@
+{
+  "name": "strap-gallery",
+  "version": "0.0.1",
+  "authors": [
+    "hlynx <hlynx@users.noreply.github.com>"
+  ],
+  "description": "AngularStrap based image gallery",
+  "main": "index.html",
+  "keywords": [
+    "angularstrap",
+    "gallery"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-strap": "latest"
+  }
+}
