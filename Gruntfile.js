@@ -41,7 +41,7 @@ module.exports = function (grunt) {
         
         concat: {
             dist: {
-                src: ['<%= meta.srcDir %>/<%= pkg.name %>.js', '<%= meta.ngtemplatesDest %>'],
+                src: ['<%= meta.srcDir %>/*.js', '<%= meta.ngtemplatesDest %>'],
                 dest: '<%= meta.destDir %>/<%= pkg.name %>.js'
             }
         },
@@ -51,7 +51,7 @@ module.exports = function (grunt) {
                 banner: '<%= meta.banner %>',
                 preserveComments: false, //will strip all comments
                 compress: {
-//                    drop_console: true
+                    drop_console: true
                 }
             },
             dist: {

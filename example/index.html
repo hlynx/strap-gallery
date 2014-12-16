@@ -6,14 +6,20 @@
         <base target="/">
         <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.css"/>
         <link rel="stylesheet" href="../bower_components/angular-motion/dist/angular-motion.css"/>
-        <!--<link rel="stylesheet" href="../src/strap-gallery.css"/>-->
-        <link rel="stylesheet" href="../dist/strap-gallery.min.css"/>
+        <link rel="stylesheet" href="../src/strap-gallery.css"/>
+        <!--<link rel="stylesheet" href="../dist/strap-gallery.min.css"/>-->
     </head>
     <body>
         
         <div ng-view class="container">
             <div data-strap-gallery>
-                <img ng-repeat="(thumb, src) in {'images/shrek-thumb.jpg': 'images/shrek.jpg', 'images/zebra-thumb.jpg': 'images/zebra.jpg'}"  data-source="{{ src }}" ng-src="{{ thumb }}" alt="">
+                <img ng-repeat='(thumb, src) in {
+                "http://vichatter.s3.amazonaws.com/a/8/7/5/2/8/5/3312520947d20feae9b6824723d145b6.jpg": "http://vichatter.s3.amazonaws.com/a/8/7/5/2/8/5/49e021c1193682085b98856d40ad6f1a.jpg",
+                "http://vichatter.s3.amazonaws.com/a/1/9/4/8/9/5/94f83bf8e8bbfd7d171204f28bc1a1d1.jpg": "http://vichatter.s3.amazonaws.com/a/1/9/4/8/9/5/1190dae1da450f9989cd03ce113e6b30.jpg",
+                "http://vichatter.s3.amazonaws.com/a/8/0/9/1/8/9/6935e39dd4db976001f20b3d097ad35d.jpg": "http://vichatter.s3.amazonaws.com/a/8/0/9/1/8/9/f73a42b7a62bd82e0f9d31da91f7128e.jpg",
+                "http://vichatter.s3.amazonaws.com/a/5/6/8/5/1/5/caf8c14155edf1f4a411b6621196f208.jpg": "http://vichatter.s3.amazonaws.com/a/5/6/8/5/1/5/8a214621359f08d63b751c0f41649308.jpg",
+                "http://vichatter.s3.amazonaws.com/a/7/8/7/3/4/4/80d9aae3dc122de6e3c774f8d73ba25d.jpg": "http://vichatter.s3.amazonaws.com/a/7/8/7/3/4/4/a9f151438d7548e48aa4db77ef507852.jpg"
+                }'  data-source="{{ src }}" ng-src="{{ thumb }}" alt="">
             </div>
             
         </div>
@@ -22,8 +28,9 @@
         <script src="../bower_components/angular-strap/dist/angular-strap.js"></script>
         <script src="../bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
         <script src="../bower_components/angular-animate/angular-animate.js"></script>
-        <script src="../dist/strap-gallery.min.js"></script>
-        <!--<script src="../src/strap-gallery.js"></script>-->
+        <!--<script src="../dist/strap-gallery.min.js"></script>-->
+        <script src="../src/strap-gallery.js"></script>
+        <script src="../src/image-loader-service.js"></script>
         <script>
             var app = angular.module('AngularStrap-image-gallery', ['strapGallery']);
         </script>

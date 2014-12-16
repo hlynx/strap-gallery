@@ -1,7 +1,7 @@
 (function() {
-    angular.module('strapGallery', ['mgcrea.ngStrap.modal', 'ngAnimate']).directive('strapGallery', ['$log', '$modal', '$document', Gallery]);
+    angular.module('strapGallery', ['mgcrea.ngStrap.modal', 'ngAnimate']).directive('strapGallery', ['$log', '$modal', '$document', '$timeout', 'ImageLoader', Gallery]);
 
-    function Gallery($log, $modal, $document) {
+    function Gallery($log, $modal, $document, $timeout, ImageLoader) {
         return {
             restrict: 'EA',
             replace: true,
@@ -17,6 +17,11 @@
                 
                 var images = [];
                 scope.currentId = 0;
+                
+//                scope.$watch('imageSrc', function(val) {
+//                    scope.src = val;
+////                    console.log(val);
+//                })
                 
                 var modal = $modal({scope: scope, template: '/src/modal.html', show: false, animation: 'am-fade-and-scale', placement: 'center'});
                 
@@ -41,6 +46,7 @@
                 });
                 
                 scope.next = function() {
+//                    Lightbox.setImage((index + 1) % images.length);
                     if(scope.currentId === scope.imagesCount-1)
                         setImage(0);
                     else
@@ -48,6 +54,7 @@
                 };
                 
                 scope.prev = function() {
+//                    Lightbox.setImage((index - 1 + images.length) % images.length);
                     if(scope.currentId === 0)
                         setImage(scope.imagesCount - 1);
                     else
@@ -64,45 +71,71 @@
                     
 //                    var id = parseInt(e.target.getAttribute('data-id1'));
                     var id = parseInt(e.target.dataset.id);
+//                    scope.currentId = id;
                     
                     modal.$promise.then(function() {
+                        console.log('open');
                         modal.show();
                         setImage(id);
                     });
                 };
                 
+                scope.$on('modal.show', function(e, el) {
+                    console.log('opened');
+//                    console.log(arguments);
+//                    setImage(scope.currentId);
+                })
+                
+                scope.$on('modal.close', function() {
+                    console.log(arguments);
+                })
+                
                 function setImage(id) {
 //                    element[0].setAttribute('style', 'background: #fff');
                     var src = images[id].dataset.source;
-                    var img = document.getElementById('strap-gallery-img');
+                    
+//                    var img = document.getElementById('strap-gallery-img');
 //                    img.cloneNode(true);
-                    console.log(img);
+//                    console.log(img);
 //                    var img = new Image();
 //                    img.onload = function() {
 //                    };
 //                    img.src = src;
-                    scope.title = 'Фотографии: ';
-                    scope.src = src;                        
+                    
+//                    scope.src = src;
+//                    console.log(scope.$$phase);
 //                    if(img)
 //                        img.src = src;
+                    
 //                        img.setAttribute('src', src);
                     
-                        
-                    scope.currentId = id;
+//                    $timeout(function() {
+//                        scope.src = src;
+//                        scope.title = 'Фотографии: ';
+//                        scope.currentId = id;
+//                    });
+                    ImageLoader.load(src).then(function () {
+//                        success();
+                        var img = modal.$element.find('img')[0];
+                        img.src = src;
+//                        img.style.height = '300px';
+//                        scope.src = src;
+                        scope.title = 'Фотографии: ';
+                        scope.currentId = id;
+                    }, function () {
+//                        success();
+                        console.error('image loading failed');
+                    });
+                    
 //                    if (!scope.$$phase) {
 //                        scope.$digest();
 //                    }
-//                    modal.show()
                 }
                 
 //                console.log(modal);
 //                modal.$element.bind('onkeypress', function() {
 //                    console.log(123);
 //                });
-                
-                function preload() {
-                    
-                }
                 
                 function onKeyPress(e) {
                     if(!modal.$isShown)
