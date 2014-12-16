@@ -6,6 +6,10 @@
     cursor: pointer;
 }
 
+.strap-gallery-modal.ng-animate {
+    /*overflow: hidden;*/
+}
+
 .strap-gallery-modal .modal-dialog {
     width: 830px;
 }

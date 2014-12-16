@@ -41,7 +41,7 @@ module.exports = function (grunt) {
         
         concat: {
             dist: {
-                src: ['<%= meta.srcDir %>/*.js', '<%= meta.ngtemplatesDest %>'],
+                src: ['<%= meta.srcDir %>/<%= pkg.name %>.js', '<%= meta.srcDir %>/image-loader-service.js', '<%= meta.ngtemplatesDest %>'],
                 dest: '<%= meta.destDir %>/<%= pkg.name %>.js'
             }
         },
