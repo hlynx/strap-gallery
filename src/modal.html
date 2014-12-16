@@ -1,16 +1,17 @@
 <div class="modal strap-gallery-modal" tabindex="-1" role="dialog">
     <div class="modal-dialog">
         <div class="modal-content">
-            <div class="modal-header" ng-show="title">
+            <div class="modal-header" ng-show="Lightbox.imageCaption">
                 <button type="button" class="close" ng-click="$hide()">&times;</button>
-                <h4 class="modal-title" ng-bind="title"></h4>
+                <h4 class="modal-title" ng-bind="Lightbox.imageCaption"></h4>
             </div>
 
             <div class="modal-body">
                 <div class="strap-gallery-img-outer">
-                    <div class="arrow next" ng-click="next()"><span class="glyphicon glyphicon-chevron-right"></span></div>
-                    <div class="arrow prev" ng-click="prev()"><span class="glyphicon glyphicon-chevron-left"></span></div>
-                    <img class="strap-gallery-img" id="strap-gallery-img" ng-src="{{ src }}" src="//:0">
+                    <div class="arrow next" ng-click="Lightbox.nextImage()"><span class="glyphicon glyphicon-chevron-right"></span></div>
+                    <div class="arrow prev" ng-click="Lightbox.prevImage()"><span class="glyphicon glyphicon-chevron-left"></span></div>
+                    <img class="strap-gallery-img" data-lightbox-src="{{Lightbox.imageUrl}}" alt="">
+                    <!--<img class="strap-gallery-img" id="strap-gallery-img" ng-src="{{ src }}" src="//:0">-->
                 </div>
             </div>
             <div class="modal-footer">

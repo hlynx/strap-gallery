@@ -1,4 +1,4 @@
-angular.module('strapGallery').service('ImageLoader', function ($q) {
+angular.module('bootstrapLightbox').service('ImageLoader', function ($q) {
   /**
    * Load the image at the given URL.
    * @param  {String}  url
