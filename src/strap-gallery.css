@@ -63,11 +63,12 @@
 
 /* !Modal dialog */
 .modal.center .modal-dialog {
-    left: 50%;
-    position: fixed;
-    top: 45%;
-    transform: translateX(-50%) translateY(-50%);
+    /*left: 50%;*/
+    /*position: fixed;*/
+    /*top: 45%;*/
+    /*transform: translateX(-50%) translateY(-50%);*/
     width: 830px;
+    /*margin-left: -415px;*/
 }
 
 .modal-backdrop {

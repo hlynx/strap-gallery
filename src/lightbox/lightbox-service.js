@@ -128,6 +128,8 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      * @type {*}
      */
     Lightbox.image = {};
+    
+    Lightbox.currentIndex = null;
 
     /**
      * The URL of the current image. This is a property of the service rather
@@ -178,7 +180,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
       });
       */
         var $scope = $rootScope.$new();
-        var modal = $modal({scope: $scope, template: Lightbox.templateUrl, show: true, animation: 'am-fade-and-scale', placement: 'center'});
+        var modal = $modal({scope: $scope, template: Lightbox.templateUrl, show: true, animation: 'am-fade-and-scale', placement: 'center', backdrop: true});
       
         $scope.$on('modal.show', function () {
             console.log("modal show");
@@ -215,6 +217,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
       var success = function () {
         index = newIndex;
         Lightbox.image = images[index];
+        Lightbox.currentIndex = index;
 
 //        cfpLoadingBar.complete();
       };
