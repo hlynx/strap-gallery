@@ -153,7 +153,6 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
      */
     Lightbox.openModal = function (newImages, newIndex) {
       images = newImages;
-      Lightbox.setImage(newIndex);
 
 /*
       var modal = $modal({
@@ -184,6 +183,7 @@ angular.module('bootstrapLightbox').provider('Lightbox', function () {
         $scope.$on('modal.show', function () {
             console.log("modal show");
             $scope.Lightbox = Lightbox;
+            Lightbox.setImage(newIndex);
 
             Lightbox.keyboardNavEnabled = true;
         });

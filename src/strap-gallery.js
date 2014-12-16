@@ -18,15 +18,6 @@
                 var images = [];
                 scope.currentId = 0;
                 
-//                scope.$watch('imageSrc', function(val) {
-//                    scope.src = val;
-////                    console.log(val);
-//                })
-                
-//                var modal = $modal({scope: scope, template: '/src/modal.html', show: false, animation: 'am-fade-and-scale', placement: 'center'});
-                
-//                $document.on('keypress', onKeyPress);
-                
                 function bind() {
                     if(isBound) return;
                     var a = element.find('a');
@@ -45,7 +36,7 @@
                         bind();
                         isBound = true;
                     }
-                    console.log(images);
+                    
                     Lightbox.openModal(images, index);
                     
                     return false;
