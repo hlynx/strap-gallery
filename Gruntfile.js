@@ -27,7 +27,7 @@ module.exports = function (grunt) {
             }
         },
         
-        // Компилятор шаблонов angular
+        // Angular template compiler
         ngtemplates: {
             strapGallery: {
                 options: {
@@ -73,8 +73,4 @@ module.exports = function (grunt) {
         'uglify:dist',
         'clean'
     ]);
-
-//    grunt.registerTask('build', ['clean', 'less:app', 'htmlbuild:dev']);
-    
-//    grunt.registerTask('build-prod', ['clean', 'less:app', 'cssmin:app', 'ngAnnotate:prod', 'ngtemplates', 'concat:prod', 'uglify:prod', 'htmlbuild:prod', 'clean']);
 };

@@ -144,7 +144,7 @@
                 
                 function onKeyPress(e) {
                     if(!modal.$isShown)
-                        return false;
+                        return;
                     
                     if(e.keyCode === 37) {
                         scope.$apply(function () {
