@@ -19,7 +19,7 @@
                 "http://vichatter.s3.amazonaws.com/a/8/0/9/1/8/9/6935e39dd4db976001f20b3d097ad35d.jpg": "http://vichatter.s3.amazonaws.com/a/8/0/9/1/8/9/f73a42b7a62bd82e0f9d31da91f7128e.jpg",
                 "http://vichatter.s3.amazonaws.com/a/5/6/8/5/1/5/caf8c14155edf1f4a411b6621196f208.jpg": "http://vichatter.s3.amazonaws.com/a/5/6/8/5/1/5/8a214621359f08d63b751c0f41649308.jpg",
                 "http://vichatter.s3.amazonaws.com/a/7/8/7/3/4/4/80d9aae3dc122de6e3c774f8d73ba25d.jpg": "http://vichatter.s3.amazonaws.com/a/7/8/7/3/4/4/a9f151438d7548e48aa4db77ef507852.jpg"
-                }'  data-source="{{ src }}" ng-src="{{ thumb }}" alt="">
+                }'  data-source="{{ src }}" ng-src="{{ thumb }}" data1-title="title text {{ $index }}" alt="">
             </div>
             
         </div>
@@ -28,11 +28,21 @@
         <script src="../bower_components/angular-strap/dist/angular-strap.js"></script>
         <script src="../bower_components/angular-strap/dist/angular-strap.tpl.min.js"></script>
         <script src="../bower_components/angular-animate/angular-animate.js"></script>
-        <script src="../dist/strap-gallery.min.js"></script>
-        <!--<script src="../src/strap-gallery.js"></script>-->
-        <!--<script src="../src/image-loader-service.js"></script>-->
+        <!--<script src="../dist/strap-gallery.min.js"></script>-->
+        <script src="../src/strap-gallery.js"></script>
+        <script src="../src/image-loader-service.js"></script>
         <script>
             var app = angular.module('AngularStrap-image-gallery', ['strapGallery']);
+            
+            angular.module('mgcrea.ngStrap.modal')
+                .config(function ($modalProvider) {
+                    angular.extend($modalProvider.defaults, {
+                        animation: 'am-fade',
+                        keyboard: false,
+                        show: false,
+                        placement: 'center'
+                    });
+                });
         </script>
         
     </body>

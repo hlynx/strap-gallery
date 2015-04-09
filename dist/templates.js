@@ -18,7 +18,7 @@ angular.module('strapGallery').run(['$templateCache', function($templateCache) {
     "                </div>\n" +
     "            </div>\n" +
     "            <div class=\"modal-footer\">\n" +
-    "                {{ currentId + 1 }} из {{ imagesCount }}\n" +
+    "                {{ currentId + 1 }} / {{ imagesCount }}\n" +
     "            </div>\n" +
     "        </div>\n" +
     "    </div>\n" +
