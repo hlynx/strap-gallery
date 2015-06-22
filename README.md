@@ -1,0 +1,1 @@
+Reloading images list: $rootScope.$broadcast('strap-gallery:reload')

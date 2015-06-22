@@ -1,7 +1,7 @@
 (function() {
     angular.module('strapGallery', ['mgcrea.ngStrap.modal', 'ngAnimate']).directive('strapGallery', ['$modal', '$document', 'ImageLoader', Gallery]);
 
-    function Gallery($modal, $document, ImageLoader) {
+    function Gallery($modal, $document, ImageLoader, $timeout) {
         return {
             restrict: 'EA',
             replace: true,
@@ -22,18 +22,28 @@
                 
                 function bind() {
                     if(isBound) return;
+                    reloadImages();
+                    
+                    scope.$on('strap-gallery:reload', function () {
+                        console.log('reload');
+                        
+                        reloadImages();
+                    });
+
+                    scope.$on('$destroy', function () {
+                        $document.off('keypress', onKeyPress);
+                    });
+
+                    isBound = true;
+                }
+                
+                function reloadImages() {
                     images = element.find('img');
                     scope.imagesCount = images.length;
                     for (var i = 0; i < scope.imagesCount; i++) {
                         images[i].dataset.id = i;
                     }
-
-                    isBound = true;
                 }
-                
-                scope.$on('$destroy', function() {
-                    $document.off('keypress', onKeyPress);
-                });
                 
                 scope.next = function() {
                     if(scope.currentId === scope.imagesCount-1)
