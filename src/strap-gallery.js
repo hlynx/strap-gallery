@@ -16,7 +16,7 @@
                 var images = [];
                 scope.currentId = 0;
                 
-                var modal = $modal({scope: scope, templateUrl: '/src/modal.html', show: false});
+                var modal = $modal({scope: scope, templateUrl: '/src/modal.html', show: false, backdrop: true});
                 
                 $document.on('keypress', onKeyPress);
                 
